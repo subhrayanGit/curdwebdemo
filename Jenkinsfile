@@ -19,7 +19,7 @@ pipeline {
             steps {
                 echo "Building docker image"
                 sh 'ls'
-                sh 'docker build -t dcpdocker1/dcpimage:${BUILD_NUMBER}.'
+                sh 'docker build -t dcpdocker1/dcpimage:${BUILD_NUMBER} .'
             }
         }
         stage('Docker Login'){
