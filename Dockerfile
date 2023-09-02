@@ -1,7 +1,7 @@
 FROM openjdk:8
 
-ADD target/spring-boot-2-hello-world-1.0.2-SNAPSHOT.jar spring-boot-2-hello-world-1.0.2-SNAPSHOT.jar
+ADD target/crud-web-demo-0.0.1-SNAPSHOT.war crud-web-demo-0.0.1-SNAPSHOT.war
 
 EXPOSE 8081
 
-ENTRYPOINT ["java","-jar","spring-boot-2-hello-world-1.0.2-SNAPSHOT"]
+ENTRYPOINT ["java","-war","crud-web-demo-0.0.1-SNAPSHOT.war"]
