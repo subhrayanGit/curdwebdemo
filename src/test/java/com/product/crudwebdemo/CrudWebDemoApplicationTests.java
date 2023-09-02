@@ -1,4 +1,4 @@
-package com.example.crudwebdemo;
+package com.product.crudwebdemo;
 
 import com.product.crudwebdemo.contoller.ProductController;
 import org.junit.jupiter.api.Test;
