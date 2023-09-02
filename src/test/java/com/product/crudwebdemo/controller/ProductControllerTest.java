@@ -19,7 +19,7 @@ public class ProductControllerTest {
     @Test
     public void shouldReturnExpectedMessage() throws Exception {
 
-        mockMvc.perform(get("/hello"))
+        mockMvc.perform(get("/products/hello"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("Hello World!"));
     }
