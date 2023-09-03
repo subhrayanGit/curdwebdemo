@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
                 // Define environment variables here
-                PREV_BUILD_NUMBER = BUILD_NUMBER-1
+                PREV_BUILD_NUMBER = ${BUILD_NUMBER}-1
     }
 
     stages {
