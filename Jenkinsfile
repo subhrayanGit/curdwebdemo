@@ -2,7 +2,8 @@ pipeline {
     agent any
     environment {
                 // Define environment variables here
-                PREV_BUILD_NUMBER = ${BUILD_NUMBER-1}
+                current_build_number = ${BUILD_NUMBER}
+                PREV_BUILD_NUMBER = current_build_number-1
     }
 
     stages {
