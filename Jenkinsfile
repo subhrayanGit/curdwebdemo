@@ -38,10 +38,16 @@ pipeline {
         }
         stage('Docker deploy'){
             steps {
-                def currentBuildNumber = ${BUILD_NUMBER}
-                def previousBuildNumber = currentBuildNumber - 1
-                echo "Previous Build Number: ${previousBuildNumber}"
-                sh 'docker run -itd --name demo_container${BUILD_NUMBER} -p  8081:8081 dcpdocker1/dcpimage:${BUILD_NUMBER}'
+                script {
+                    def currentBuildNumber = ${BUILD_NUMBER}
+                    def previousBuildNumber = currentBuildNumber - 1
+                    echo "Previous Build Number: ${previousBuildNumber}"
+                }
+            }
+        }
+        stage('Docker deploy'){
+            steps {
+               sh 'docker run -itd --name demo_container${BUILD_NUMBER} -p  8081:8081 dcpdocker1/dcpimage:${BUILD_NUMBER}'
             }
         }
         stage('Archving') {
