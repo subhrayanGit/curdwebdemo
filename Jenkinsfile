@@ -39,7 +39,7 @@ pipeline {
         stage('Calculate previous build'){
             steps {
                 script {
-                    def currentBuildNumber = ${BUILD_NUMBER}
+                    def currentBuildNumber = BUILD_NUMBER
                     def previousBuildNumber = currentBuildNumber - 1
                     echo "Previous Build Number: ${previousBuildNumber}"
                 }
