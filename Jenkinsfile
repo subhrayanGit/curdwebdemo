@@ -1,6 +1,12 @@
 pipeline {
     agent any
     stages {
+
+        environment {
+            // Define environment variables here
+            PREV_BUILD_NUMBER = BUILD_NUMBER-1
+        }
+
         stage('Compile and Clean') {
             steps {
                 // Run Maven on a Unix agent.
@@ -37,6 +43,7 @@ pipeline {
         }
         stage('Docker deploy'){
             steps {
+                sh 'docker stop demo_container${PREV_BUILD_NUMBER} || true'
                 sh 'docker run -itd --name demo_container${BUILD_NUMBER} -p  8081:8081 dcpdocker1/dcpimage:${BUILD_NUMBER}'
             }
         }
