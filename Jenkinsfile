@@ -37,7 +37,7 @@ pipeline {
         }
         stage('Docker deploy'){
             steps {
-                sh 'docker stop demo_container${BUILD_NUMBER-1}'
+                sh 'docker stop demo_container${BUILD_NUMBER-1}' || true
                 sh 'docker run -itd --name demo_container${BUILD_NUMBER} -p  8081:8081 dcpdocker1/dcpimage:${BUILD_NUMBER}'
             }
         }
