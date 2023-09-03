@@ -8,7 +8,7 @@ pipeline {
                 sh "mvn clean compile"
             }
         }
-        stage('deploy') {
+        stage('Maven packaging') {
 
             steps {
                 sh "mvn package"
@@ -46,10 +46,6 @@ pipeline {
                  archiveArtifacts '**/target/*.jar'
             }
         }
-        stage('Run container'){
-            steps {
-                sh 'docker run dcpdocker1/dcpimage:${BUILD_NUMBER}'
-            }
-        }
+
     }
 }
