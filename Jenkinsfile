@@ -42,6 +42,7 @@ pipeline {
                     def currentBuildNumber = BUILD_NUMBER
                     def previousBuildNumber = currentBuildNumber - 1
                     echo "Previous Build Number: ${previousBuildNumber}"
+                    echo "Current Build Number: ${currentBuildNumber}"
                 }
             }
         }
