@@ -36,6 +36,11 @@ pipeline {
                 sh 'docker push dcpdocker1/dcpimage:${BUILD_NUMBER}'
             }
         }
+        stage('Get Running Containers') {
+            steps {
+                sh "docker stop \$(docker ps -q --filter name='demo_container') || true"
+            }
+        }
         stage('Docker deploy'){
             steps {
                sh 'docker run -itd --name demo_container${BUILD_NUMBER} -p  8081:8081 dcpdocker1/dcpimage:${BUILD_NUMBER}'
