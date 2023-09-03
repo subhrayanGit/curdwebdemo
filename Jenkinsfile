@@ -48,7 +48,7 @@ pipeline {
         }
         stage('Clean up'){
              steps {
-                 sh 'docker stop demo_container:${BUILD_NUMBER-1}'
+                 sh 'docker stop demo_container${BUILD_NUMBER-1}'
              }
         }
 
