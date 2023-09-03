@@ -36,7 +36,7 @@ pipeline {
                 sh 'docker push dcpdocker1/dcpimage:${BUILD_NUMBER}'
             }
         }
-        stage('Get Running Containers') {
+        stage('Stop Running Containers') {
             steps {
                 sh "docker stop \$(docker ps -q --filter name='demo_container') || true"
             }
