@@ -44,6 +44,12 @@ pipeline {
                 }
             }
         }
+        stage('Stop previous container'){
+            steps {
+                docker stop demo_container${previousBuildNum} || true
+            }
+        }
+
         stage('Docker deploy'){
             steps {
                sh 'docker run -itd --name demo_container${BUILD_NUMBER} -p  8081:8081 dcpdocker1/dcpimage:${BUILD_NUMBER}'
