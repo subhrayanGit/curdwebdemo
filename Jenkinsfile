@@ -46,5 +46,10 @@ pipeline {
                  archiveArtifacts '**/target/*.jar'
             }
         }
+        stage('Run container'){
+            steps {
+                sh 'docker run dcpdocker1/dcpimage:${BUILD_NUMBER}'
+            }
+        }
     }
 }
