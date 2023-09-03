@@ -36,7 +36,7 @@ pipeline {
                 sh 'docker push dcpdocker1/dcpimage:${BUILD_NUMBER}'
             }
         }
-        stage('Docker deploy'){
+        stage('Calculate previous build'){
             steps {
                 script {
                     def currentBuildNumber = ${BUILD_NUMBER}
