@@ -38,13 +38,18 @@ pipeline {
         stage('Docker deploy'){
             steps {
 
-                sh 'docker run -it --name demo_container${BUILD_NUMBER} -p  8081:8080 dcpdocker1/dcpimage:${BUILD_NUMBER}'
+                sh 'docker run -itd --name demo_container${BUILD_NUMBER} -p  8081:8081 dcpdocker1/dcpimage:${BUILD_NUMBER}'
             }
         }
         stage('Archving') {
             steps {
                  archiveArtifacts '**/target/*.jar'
             }
+        }
+        stage('Clean up'){
+             steps {
+                 sh 'docker stop demo_container:${BUILD_NUMBER-1}'
+             }
         }
 
     }
