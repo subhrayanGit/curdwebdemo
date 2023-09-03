@@ -38,8 +38,8 @@ pipeline {
         }
         stage('Docker deploy'){
             steps {
-                currentBuildNumber = currentBuild.number
-                previousBuildNumber = currentBuildNumber - 1
+                def currentBuildNumber = ${BUILD_NUMBER}
+                def previousBuildNumber = currentBuildNumber - 1
                 echo "Previous Build Number: ${previousBuildNumber}"
                 sh 'docker run -itd --name demo_container${BUILD_NUMBER} -p  8081:8081 dcpdocker1/dcpimage:${BUILD_NUMBER}'
             }
