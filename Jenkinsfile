@@ -1,11 +1,5 @@
 pipeline {
     agent any
-    environment {
-                // Define environment variables here
-                current_build_number = ${BUILD_NUMBER}
-                PREV_BUILD_NUMBER = current_build_number-1
-    }
-
     stages {
 
         stage('Compile and Clean') {
@@ -44,7 +38,9 @@ pipeline {
         }
         stage('Docker deploy'){
             steps {
-                sh 'docker stop demo_container${PREV_BUILD_NUMBER} || true'
+                currentBuildNumber = currentBuild.number
+                previousBuildNumber = currentBuildNumber - 1
+                echo "Previous Build Number: ${previousBuildNumber}"
                 sh 'docker run -itd --name demo_container${BUILD_NUMBER} -p  8081:8081 dcpdocker1/dcpimage:${BUILD_NUMBER}'
             }
         }
