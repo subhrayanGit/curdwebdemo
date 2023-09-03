@@ -36,11 +36,6 @@ pipeline {
                 sh 'docker push dcpdocker1/dcpimage:${BUILD_NUMBER}'
             }
         }
-        stage('Stop previous container'){
-            steps {
-                sh 'docker ps --format "{{.Names}}" | grep "demo_container" | awk '{print $1}' | xargs docker stop'
-            }
-        }
         stage('Docker deploy'){
             steps {
                sh 'docker run -itd --name demo_container${BUILD_NUMBER} -p  8081:8081 dcpdocker1/dcpimage:${BUILD_NUMBER}'
