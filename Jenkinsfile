@@ -46,7 +46,7 @@ pipeline {
         }
         stage('Stop previous container'){
             steps {
-                docker stop demo_container${previousBuildNum} || true
+                sh 'docker stop demo_container${previousBuildNum} || true'
             }
         }
 
