@@ -38,7 +38,7 @@ pipeline {
         stage('Docker deploy'){
             steps {
 
-                sh 'docker run -itd -p  8081:8080 dcpdocker1/dcpimage:${BUILD_NUMBER}'
+                sh 'docker run -itd --name demo_container:${BUILD_NUMBER} -p  8081:8080 dcpdocker1/dcpimage:${BUILD_NUMBER}'
             }
         }
         stage('Archving') {
