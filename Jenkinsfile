@@ -1,11 +1,11 @@
 pipeline {
     agent any
-    stages {
+    environment {
+                // Define environment variables here
+                PREV_BUILD_NUMBER = BUILD_NUMBER-1
+    }
 
-        environment {
-            // Define environment variables here
-            PREV_BUILD_NUMBER = BUILD_NUMBER-1
-        }
+    stages {
 
         stage('Compile and Clean') {
             steps {
