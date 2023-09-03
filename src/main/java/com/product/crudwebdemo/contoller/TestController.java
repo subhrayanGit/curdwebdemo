@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("test") //http://localhost:8080/test
+@RequestMapping("/test") //http://localhost:8080/test
 public class TestController {
 	
 	@Autowired
 	private Environment env;
 
-	@GetMapping("/hello")
+	@GetMapping
 	public String sayHello() {
 		return "Hello";
 	}
