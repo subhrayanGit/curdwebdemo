@@ -1,13 +1,14 @@
 package com.product.crudwebdemo.contoller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.product.crudwebdemo.model.Product;
 import com.product.crudwebdemo.respository.ProductRepository;
 
-@RestController
+@Controller
 @RequestMapping("/products")
 public class ProductController {
 
@@ -56,8 +57,5 @@ public class ProductController {
         productRepository.deleteById(id);
         return "redirect:/products";
     }
-    @GetMapping("/hello")
-    public String sayHello() {
-    	return "Hello World!";
-    }
+    
 }
