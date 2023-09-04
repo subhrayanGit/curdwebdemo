@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>View Product</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
 </head>
 <body>
-    <h1>Product Details</h1>
+	<div class="view-container">
+    	<h1>Product Details</h1>
     
-    <p>ID: <span th:text="${product.id}"></span></p>
-    <p>Name: <span th:text="${product.name}"></span></p>
-    <p>Price: <span th:text="${product.price}"></span></p>
+		<p>ID: <span th:text="${product.id}"></span></p>
+    	<p>Name: <span th:text="${product.name}"></span></p>
+    	<p>Price: <span th:text="${product.price}"></span></p>
 
     <a th:href="@{/products}">Back to List</a>
+	</div>
+    
 </body>
 </html>
